@@ -20,12 +20,12 @@ class ArticlesController < ApplicationController
 
   def destroy
     article = Article.find(params[:id])
-    article.destroy
+    article.destroy if article.user_id == current_user.id
     redirect_to action: :index
   end
 
   def update
-    @article.update(article_params)
+    @article.update(article_params) if @article.user_id == current_user.id
     redirect_to action: :index
   end
 
@@ -34,12 +34,10 @@ class ArticlesController < ApplicationController
 
   private
   def article_params
-    params.require(:article).permit(:text)
-  end
+    params.require(:article).permit(:text).merge(user_id: current_user.id)
+    end
 
   def set_article
     @article = Article.find(params[:id])
     end
-
-
 end
