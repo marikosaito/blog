@@ -1,0 +1,15 @@
+
+<div class="text">
+  <%= @article.text %>
+  <ul class="list clearfix">
+    <li>
+      <%= link_to 'SHOW', "/articles/#{@article.id}", class:"link", method: :get %>
+    </li>
+    <li>
+      <%= link_to 'EDIT', "/articles/#{@article.id}/edit", class:"link", method: :get %>
+    </li>
+    <li>
+      <%= link_to 'DESTROY', "/articles/#{@article.id}/", class:"link", method: :delete %>
+    </li>
+  </ul>
+</div>

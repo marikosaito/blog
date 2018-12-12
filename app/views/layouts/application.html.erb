@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <h1 class="blog">Blog</h1>
+      <% if user_signed_in? %>
+      <ol class="nav">
+        <li>
+          <%= link_to "logout", destroy_user_session_path, method: :delete, class: 'nav' %>
+        </li>
+        <li>
+          <a href="/articles/new" class="nav">new</a>
+        </li>
+        <% else %>
+        <li>
+          <%= link_to "login", new_user_registration_path, class: 'nav' %>
+          </li>
+        <li>
+          <%= link_to "signin", new_user_session_path, class: 'nav' %>
+        </li>
+      </ol>
+      <% end %>
+    </header>
+    <%= yield %>
+  </body>
+</html>
