@@ -18,7 +18,8 @@ header{
   padding-right: 20px;
   color: white;
   line-height: 60px;
-  display:inline
+  display:inline-block;
+  text-decoration: none;
 }
 
 .text{
